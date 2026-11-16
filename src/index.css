@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 3D HUD dark surface tokens */
+    --cwe-bg: #0B1017;
+    --cwe-bg-elevated: #101722;
+    --cwe-surface: #141D29;
+    --cwe-surface-secondary: #1A2532;
+    --cwe-text-primary: #F3F2ED;
+    --cwe-text-secondary: #A7B2C0;
+    --cwe-text-muted: #8B99AB;
+    --cwe-accent-cyan: #45D6E6;
+    --cwe-accent-champagne: #D5B477;
+    --cwe-border: rgba(255, 255, 255, 0.09);
+    --cwe-divider: rgba(255, 255, 255, 0.07);
+
+    /* Warm Editorial Minimalism light tokens (2D Portfolio, Case Study Modal, Recruiter View) */
+    --cwe-light-bg: #F5F3EE;
+    --cwe-light-surface: #FFFFFF;
+    --cwe-light-secondary: #EDEAE2;
+    --cwe-light-ink: #252A2A;
+    --cwe-light-slate: #69716D;
+    --cwe-light-slate-strong: #525955;
+    --cwe-light-sage: #66877B;
+    --cwe-light-sage-strong: #4A685D;
+    --cwe-light-sage-hover: #3D574E;
+    --cwe-light-sage-tint: #E4ECE8;
+    --cwe-light-champagne: #B99B70;
+    --cwe-light-champagne-ink: #785E37;
+    --cwe-light-border: #E3DED3;
+    --cwe-light-divider: #E8E4DC;
+
+    --cwe-radius-card: 12px;
+    --cwe-radius-control: 8px;
+  }
+
+  html {
+    background-color: var(--cwe-bg);
+    color: var(--cwe-text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--cwe-light-sage-strong);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Light Editorial Buttons (2D Portfolio, Project Details, Recruiter Dossier) */
+  .cwe-editorial-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-body text-sm font-semibold transition-colors duration-editorial ease-editorial focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A685D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F3EE] min-h-[44px];
+    background-color: var(--cwe-light-sage-strong);
+    color: #FFFFFF;
+  }
+
+  .cwe-editorial-btn-primary:hover {
+    background-color: var(--cwe-light-sage-hover);
+  }
+
+  .cwe-editorial-btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-body text-sm font-medium transition-colors duration-editorial ease-editorial focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A685D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F3EE] min-h-[44px];
+    background-color: var(--cwe-light-surface);
+    color: var(--cwe-light-ink);
+    border: 1px solid var(--cwe-light-border);
+  }
+
+  .cwe-editorial-btn-secondary:hover {
+    background-color: var(--cwe-light-secondary);
+    border-color: #CFC8BA;
+  }
+
+  .cwe-editorial-btn-tertiary {
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg font-body text-sm font-medium transition-colors duration-editorial ease-editorial focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A685D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F3EE] min-h-[44px];
+    color: var(--cwe-light-slate-strong);
+  }
+
+  .cwe-editorial-btn-tertiary:hover {
+    color: var(--cwe-light-ink);
+    background-color: var(--cwe-light-secondary);
+  }
+
+  /* Compact dark HUD actions preserved for 3D drawer / 3D mode */
+  .cwe-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-body text-sm font-semibold transition-colors duration-editorial ease-editorial focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#45D6E6];
+    background-color: var(--cwe-accent-cyan);
+    color: #0B1017;
+  }
+
+  .cwe-btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-body text-sm font-medium transition-colors duration-editorial ease-editorial focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#45D6E6];
+    background-color: var(--cwe-surface-secondary);
+    color: var(--cwe-text-primary);
+    border: 1px solid var(--cwe-border);
+  }
+}
+
+/* Print-friendly styles for Recruiter Quick View Candidate Dossier */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 14mm;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    backdrop-filter: none !important;
+  }
+
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  body.cwe-printing-dossier,
+  body.cwe-printing-dossier #root,
+  body.cwe-printing-dossier #root > div {
+    background: #FFFFFF !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  body.cwe-printing-dossier header,
+  body.cwe-printing-dossier main,
+  body.cwe-printing-dossier canvas,
+  body.cwe-printing-dossier aside,
+  body.cwe-printing-dossier [data-no-print="true"],
+  body.cwe-printing-dossier .fixed:not([data-printable-dossier="true"]) {
+    display: none !important;
+  }
+
+  body.cwe-printing-dossier [data-printable-dossier="true"] {
+    position: static !important;
+    inset: auto !important;
+    background: #FFFFFF !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  body.cwe-printing-dossier [data-printable-dossier-card="true"] {
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  body.cwe-printing-dossier [data-printable-dossier-card="true"] section,
+  body.cwe-printing-dossier .break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body.cwe-printing-dossier [data-printable-dossier-card="true"] p,
+  body.cwe-printing-dossier [data-printable-dossier-card="true"] li,
+  body.cwe-printing-dossier [data-printable-dossier-card="true"] h2,
+  body.cwe-printing-dossier [data-printable-dossier-card="true"] h3,
+  body.cwe-printing-dossier [data-printable-dossier-card="true"] h4,
+  body.cwe-printing-dossier [data-printable-dossier-card="true"] span,
+  body.cwe-printing-dossier [data-printable-dossier-card="true"] a {
+    color: #111111 !important;
+  }
+}

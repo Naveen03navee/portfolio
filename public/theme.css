@@ -1,0 +1,14 @@
+/* CWE Stage G.10 Editorial Design Tokens */
+:root {
+  --color-obsidian-base: #0B1017;
+  --color-obsidian-surface: #141D29;
+  --color-titanium-text: #F3F2ED;
+  --color-light-bg: #F5F3EE;
+  --color-light-surface: #FFFFFF;
+  --color-light-secondary: #EDEAE2;
+  --color-light-ink: #252A2A;
+  --color-light-slate: #69716D;
+  --color-light-sage: #66877B;
+  --color-light-champagne: #B99B70;
+  --color-light-border: #E3DED3;
+}
